@@ -1,0 +1,96 @@
+.form_input input {
+  display: block;
+  width: 100%;
+  border: 0;
+  outline: none;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #68727f;
+  height: 55px;
+  color: #04142a;
+  padding: 20px;
+  padding-right: 50px;
+  margin-bottom: 1rem;
+}
+
+.form_input input::placeholder {
+  color: #68727f;
+  opacity: 1;
+}
+
+.form_input input.signupemail {
+  background-image: url("https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b985c352ee0f70f1d8800_message_input.png");
+  background-repeat: no-repeat;
+  background-size: 22px;
+  background-position: top 18px right 15px;
+}
+
+.form_submit {
+  text-align: center;
+}
+
+.form_submit button {
+  display: inline-block;
+  background-color: #04142a;
+  border-radius: 8px;
+  height: 55px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family:
+    Geom Graphic,
+    Arial,
+    sans-serif;
+  font-weight: 600;
+  color: #fff;
+  padding-left: 40px;
+  padding-right: 120px;
+  background-image: url("https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b9afae6c8067536ed6549_f_submit_btn.png");
+  background-size: 22px;
+  background-position: top 17px right 25px;
+  position: relative;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+}
+
+.form_submit button:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  right: 75px;
+}
+
+.form_submit button:hover {
+  opacity: 0.7;
+}
+
+.form_input.forget_pass_link {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.form_input.forget_pass_link a {
+  display: inline-block;
+  font-size: 17px;
+  color: #04142a;
+  text-decoration: underline;
+  transition: all 0.2s ease;
+}
+
+.form_input.forget_pass_link a:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 991px) {
+  .form_input input {
+    height: 48px;
+    background-size: 17px !important;
+  }
+
+  .show_pass {
+    width: 22px;
+  }
+}
