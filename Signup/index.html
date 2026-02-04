@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
     />
+    <link rel="stylesheet" href="phn.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -27,6 +28,9 @@
           type="email"
           placeholder="Enter your email"
         />
+      </div>
+      <div class="form_input">
+        <input required id="phone" name="phone" type="text" />
       </div>
       <div class="form_input form_password">
         <input
@@ -63,6 +67,16 @@
       </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="phn.js"></script>
+    <script src="utils.js"></script>
+    <script>
+      var input = document.querySelector("#phone");
+      window.iti = window.intlTelInput(input, {
+        utilsScript:
+          "https://29101afcd41198dafcdd8b88cbac692a.cdn.bubble.io/f1754868069986x904074362622997900/utils.js",
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
