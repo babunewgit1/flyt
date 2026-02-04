@@ -157,6 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
           notyf.success("Sign up Successful");
           signupForm.reset();
+          
+          // Dispatch event to update header instantly
+          window.dispatchEvent(new Event("userLoggedIn"));
         } else {
           // Signup Failed
           notyf.error(
