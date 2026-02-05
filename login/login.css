@@ -1,3 +1,9 @@
+/*
+========================================
+    !login
+========================================
+*/
+
 .form_input input {
   display: block;
   width: 100%;
@@ -16,13 +22,6 @@
 .form_input input::placeholder {
   color: #68727f;
   opacity: 1;
-}
-
-.form_input input.signupname {
-  background-image: url("https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b983fd26b1dda089e9bdb_userinput.png");
-  background-repeat: no-repeat;
-  background-size: 22px;
-  background-position: top 13px right 15px;
 }
 
 .form_input input.signupemail {
@@ -112,6 +111,44 @@
 
 .auth_social {
   display: none;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.remember_check {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.remember_check input {
+  accent-color: #04142a;
+  cursor: pointer;
+}
+
+.remember_check label {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 17px;
+  color: #04142a;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.form_input.forget_pass_link a {
+  display: inline-block;
+  font-size: 17px;
+  color: #04142a;
+  transition: all 0.2s ease;
+}
+
+.form_input.forget_pass_link a:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 991px) {

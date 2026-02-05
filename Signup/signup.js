@@ -1,27 +1,26 @@
 /*
-  TODO: Enable email validation with Abstract API.
-  TODO: Enable signup for reset when page will load.
+========================================
+    !signup
+========================================
 */
-
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Toggle Password Visibility
-  const showPassButtons = document.querySelectorAll('.show_pass');
+  const showPassButtons = document.querySelectorAll(".show_pass");
   if (showPassButtons) {
     showPassButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const input = button.parentElement.querySelector('input');
-        const img = button.querySelector('img');
+      button.addEventListener("click", () => {
+        const input = button.parentElement.querySelector("input");
+        const img = button.querySelector("img");
 
         if (input && img) {
-          if (input.type === 'password') {
-            input.type = 'text';
+          if (input.type === "password") {
+            input.type = "text";
             img.src =
-              'https://cdn.prod.website-files.com/673728493d38fb595b0df373/6981d4e4fd9099de65a07b11_eye_off.png';
+              "https://cdn.prod.website-files.com/673728493d38fb595b0df373/6981d4e4fd9099de65a07b11_eye_off.png";
           } else {
-            input.type = 'password';
+            input.type = "password";
             img.src =
-              'https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b853f0e40bcd4969f65de_password.png';
+              "https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b853f0e40bcd4969f65de_password.png";
           }
         }
       });
@@ -60,9 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // Validate Phone Number
       let internationalNumber = "";
       if (window.iti && window.iti.isValidNumber()) {
-        const format = (window.intlTelInputUtils && window.intlTelInputUtils.numberFormat) ?
-          window.intlTelInputUtils.numberFormat.E164 :
-          1;
+        const format =
+          window.intlTelInputUtils && window.intlTelInputUtils.numberFormat
+            ? window.intlTelInputUtils.numberFormat.E164
+            : 1;
         internationalNumber = window.iti.getNumber(format);
       } else {
         notyf.error("Please enter a valid phone number.");
@@ -81,10 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const submitBtn = signupForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerText;
+
       try {
+        // Disable button and show loading text
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Please wait...";
+
         // Verify Email and Phone
         const verifyRes = await fetch(
-          "https://operators-dashboard.bubbleapps.io/api/1.1/wf/email_phone_verification", {
+          "https://operators-dashboard.bubbleapps.io/api/1.1/wf/email_phone_verification",
+          {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -102,20 +110,18 @@ document.addEventListener('DOMContentLoaded', () => {
           notyf.error("Please enter a valid phone number.");
           return;
         }
-
-        // if (
-        //   verifyData.response.email_status !== "DELIVERABLE" ||
-        //   verifyData.response.disposable_email === true
-        // ) {
-        //   notyf.error("Please enter a valid email");
-        //   return;
-        // }
-
-
+        if (
+          verifyData.response.email_status !== "DELIVERABLE" ||
+          verifyData.response.disposable_email === true
+        ) {
+          notyf.error("Please enter a valid email");
+          return;
+        }
 
         //Perform Signup
         const signupRes = await fetch(
-          "https://operators-dashboard.bubbleapps.io/api/1.1/wf/webflow_signup_flyt", {
+          "https://operators-dashboard.bubbleapps.io/api/1.1/wf/webflow_signup_flyt",
+          {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -135,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (typeof Cookies !== "undefined") {
             Cookies.set("userEmail", email, {
               expires: 7,
-              secure: true
+              secure: true,
             });
             Cookies.set("authToken", signupData.response.token, {
               expires: 7,
@@ -157,9 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
           notyf.success("Sign up Successful");
           signupForm.reset();
-          
+
           // Dispatch event to update header instantly
           window.dispatchEvent(new Event("userLoggedIn"));
+
+          // Redirect to homepage after 2 seconds
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2000);
         } else {
           // Signup Failed
           notyf.error(
@@ -169,6 +180,12 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {
         console.error(err);
         notyf.error("Something went wrong. Please try again.");
+      } finally {
+        // Restore button state
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerText = originalBtnText;
+        }
       }
     });
   }

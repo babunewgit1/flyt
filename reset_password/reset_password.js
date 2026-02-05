@@ -1,19 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const showPassButtons = document.querySelectorAll('.show_pass');
+/*
+========================================
+    !Reset password
+========================================
+*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  const showPassButtons = document.querySelectorAll(".show_pass");
 
   showPassButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const input = button.parentElement.querySelector('input');
-      const img = button.querySelector('img');
+    button.addEventListener("click", () => {
+      const input = button.parentElement.querySelector("input");
+      const img = button.querySelector("img");
 
-      if (input.type === 'password') {
-        input.type = 'text';
+      if (input.type === "password") {
+        input.type = "text";
         img.src =
-          'https://cdn.prod.website-files.com/673728493d38fb595b0df373/6981d4e4fd9099de65a07b11_eye_off.png';
+          "https://cdn.prod.website-files.com/673728493d38fb595b0df373/6981d4e4fd9099de65a07b11_eye_off.png";
       } else {
-        input.type = 'password';
+        input.type = "password";
         img.src =
-          'https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b853f0e40bcd4969f65de_password.png';
+          "https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b853f0e40bcd4969f65de_password.png";
       }
     });
   });

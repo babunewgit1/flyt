@@ -1,3 +1,9 @@
+/*
+========================================
+    !signup
+========================================
+*/
+
 .form_input input {
   display: block;
   width: 100%;
@@ -18,11 +24,45 @@
   opacity: 1;
 }
 
+.form_input input.signupname {
+  background-image: url("https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b983fd26b1dda089e9bdb_userinput.png");
+  background-repeat: no-repeat;
+  background-size: 22px;
+  background-position: top 13px right 15px;
+}
+
 .form_input input.signupemail {
   background-image: url("https://cdn.prod.website-files.com/673728493d38fb595b0df373/697b985c352ee0f70f1d8800_message_input.png");
   background-repeat: no-repeat;
   background-size: 22px;
   background-position: top 18px right 15px;
+}
+
+.form_password {
+  position: relative;
+}
+
+.show_pass {
+  display: inline-block;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: calc(100% - 26px);
+  transform: translate(-50%, -50%);
+  width: 26px;
+  transition: all 0.3s ease;
+}
+
+.show_pass:hover {
+  opacity: 0.7;
+}
+
+.show_pass img {
+  display: inline-block;
+  width: 100% !important;
 }
 
 .form_submit {
@@ -67,21 +107,17 @@
   opacity: 0.7;
 }
 
-.form_input.forget_pass_link {
-  text-align: center;
-  margin-top: 1.5rem;
+.auth_social_link:hover {
+  background-color: #68727f;
 }
 
-.form_input.forget_pass_link a {
-  display: inline-block;
-  font-size: 17px;
-  color: #04142a;
-  text-decoration: underline;
-  transition: all 0.2s ease;
+.auth_social_link:hover img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(356deg) brightness(102%) contrast(102%);
 }
 
-.form_input.forget_pass_link a:hover {
-  opacity: 0.7;
+.auth_social {
+  display: none;
 }
 
 @media screen and (max-width: 991px) {

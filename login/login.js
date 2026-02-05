@@ -1,3 +1,10 @@
+/*
+========================================
+    !Login
+========================================
+*/
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const showPassButtons = document.querySelector(".show_pass");
 
@@ -32,7 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = loginForm.querySelector(".signupemail").value.trim();
     const password = loginForm.querySelector("#password").value;
 
+    const submitBtn = loginForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerText;
+
     try {
+      // Disable button and show loading text
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Please wait...";
+
       const response = await fetch(
         "https://operators-dashboard.bubbleapps.io/api/1.1/wf/webflow_login_flyt",
         {
@@ -77,6 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Dispatch event to update header instantly
         window.dispatchEvent(new Event("userLoggedIn"));
+
+        // Redirect to homepage after 2 seconds
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
       } else {
         notyf.error(
           "Login failed: " + (data.message || "Invalid credentials")
@@ -85,6 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error(error);
       notyf.error("An error occurred during login. Please try again.");
+    } finally {
+      // Restore button state
+      if (submitBtn) {
+         submitBtn.disabled = false;
+         submitBtn.innerText = originalBtnText;
+      }
     }
   });
 });
