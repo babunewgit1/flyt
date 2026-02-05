@@ -1,6 +1,7 @@
 /*
 ========================================
     !Global js file for user auth
+    !This file will connect in whole website
 ========================================
 */
 
