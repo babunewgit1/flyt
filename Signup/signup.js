@@ -110,13 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
           notyf.error("Please enter a valid phone number.");
           return;
         }
-        if (
-          verifyData.response.email_status !== "DELIVERABLE" ||
-          verifyData.response.disposable_email === true
-        ) {
-          notyf.error("Please enter a valid email");
-          return;
-        }
+        // if (
+        //   verifyData.response.email_status !== "DELIVERABLE" ||
+        //   verifyData.response.disposable_email === true
+        // ) {
+        //   notyf.error("Please enter a valid email");
+        //   return;
+        // }
 
         //Perform Signup
         const signupRes = await fetch(
